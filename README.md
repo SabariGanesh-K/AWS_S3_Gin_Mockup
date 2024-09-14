@@ -33,7 +33,7 @@ This is Sabari , A tech enthusiast known for my tech skills and versatility in l
 - Experienced and skilled in Go lang. Have also taken courses revolving around Go lang. 
 - Also a fun , empathetic , motivated coder with a will to do anything that is required . Have always been a all rounder as well being passionate on extracurrcilurs in college. Will be a fun to have extrovert around the office
 
-- You may know more about me here :- [https://www.sabari.codes](url)
+- You may know more about me here :-([www.sabari.codes](https://www.sabari.codes))
 
 <h2>Technical Implementation</h2>
 
@@ -41,7 +41,8 @@ Pointer wise explanation :-
 Requirements:
 1. User Authentication & Authorization:
 - Implemented an advanced safe and secured Paseto token based auth with tests in token package . Helps offer clear distinction between private and public tokens
-  [https://permify.co/post/jwt-paseto/](url)
+
+  ([https://permify.co/post/jwt-paseto/](https://permify.co/post/jwt-paseto/))
 
 2. File Upload & Management:
 - Used AWS SDK for Go to upload objects and retrieve location and metadatas

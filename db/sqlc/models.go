@@ -16,6 +16,8 @@ type Files struct {
 	S3Url     string    `json:"s3_url"`
 	FileName  string    `json:"file_name"`
 	CreatedAt time.Time `json:"created_at"`
+	Filesize  string    `json:"filesize"`
+	Filetype  string    `json:"filetype"`
 }
 
 type Sessions struct {
@@ -36,6 +38,7 @@ type Users struct {
 	CreatedAt         time.Time `json:"created_at"`
 	FilesOwned        []string  `json:"files_owned"`
 	IsEmailVerified   bool      `json:"is_email_verified"`
+	Role              string    `json:"role"`
 }
 
 type VerifyEmails struct {

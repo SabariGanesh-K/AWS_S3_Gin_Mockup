@@ -5,8 +5,7 @@ import (
 	"log"
 	"os"
 	"testing"
-
-	"github.com/SabariGanesh-K/21BPS1209_Backend.git/util"
+ _ "github.com/golang/mock/mockgen/model"
 	_ "github.com/lib/pq"
 )
 

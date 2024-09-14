@@ -16,8 +16,17 @@ dropdb:
 	docker exec -it postgres dropdb filemanager
 sqlc:
 	sqlc generate
+server:
+	go run main.go
+
+test:
+	go test -v -cover ./db/sqlc ./api ./token ./util
 
 migrateup:
 	migrate -path db/migrations -database "$(DB_URL)" -verbose up
 
-.PHONY: postgres new_migration createdb dropdb migrateup createmigrateinitschema sqlc
+mock:
+	mockgen -package mockdb -destination db/mock/store.go github.com/SabariGanesh-K/21BPS1209_Backend.git/db/sqlc Store
+
+
+.PHONY: postgres new_migration createdb dropdb migrateup createmigrateinitschema sqlc mock test

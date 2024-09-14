@@ -1,6 +1,6 @@
 package util
 
 const (
-	FreeUser = "freeuser"
+	FreeUserRole = "freeuser"
 
 )

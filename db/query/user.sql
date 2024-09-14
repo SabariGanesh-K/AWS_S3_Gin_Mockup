@@ -3,9 +3,10 @@ INSERT INTO users (
   username,
   hashed_password,
   full_name,
-  email
+  email,
+   files_owned
 ) VALUES (
-  $1, $2, $3, $4
+  $1, $2, $3, $4,'{}'
 ) RETURNING *;
 
 -- name: GetUser :one
@@ -20,6 +21,14 @@ SET
   full_name = COALESCE(sqlc.narg(full_name), full_name),
   email = COALESCE(sqlc.narg(email), email),
   is_email_verified = COALESCE(sqlc.narg(is_email_verified), is_email_verified)
+
+WHERE
+  username = sqlc.arg(username)
+RETURNING *;
+
+-- name: AddFile :one
+UPDATE users
+SET files_owned = array_append("files_owned", sqlc.arg(file_name))
 WHERE
   username = sqlc.arg(username)
 RETURNING *;

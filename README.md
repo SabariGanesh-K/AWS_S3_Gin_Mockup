@@ -2,13 +2,21 @@
 
 <h2>Features and Stacks </h2>
 - Used Gin framework for Backend 
+
 - Complete test driven development using testify
+  
 - Migrations based DB setup using golang migrate
+  
 - PostgreSQL from Docker
+  
 - DB Mock being used to isolate dependencies  [Mockgen]
+  
 - SQLC generation
-- AWS 
+  
+- AWS
+  
 - Cron Job for asset scheduled deletion [Hourly]
+  
  and many more...
 
  Feel free to checkout the code.

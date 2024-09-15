@@ -6,16 +6,23 @@
 - Complete test driven development using testify
   
 - Migrations based DB setup using golang migrate
+
+- Redis with background processors for mail handling
   
-- PostgreSQL from Docker
+- PostgreSQL and Redis  Dockerized at Alpine lightweight image
   
 - DB Mock being used to isolate dependencies  [Mockgen]
   
 - SQLC generation
-  
+
 - AWS
   
 - Cron Job for asset scheduled deletion [Hourly]
+
+- Graceful shutdown to prevent crashes
+
+  ![image](https://github.com/user-attachments/assets/863abb2f-b24f-4fdd-949d-fdb817ebfd82)
+
   
  and many more...
 
@@ -56,17 +63,25 @@ Requirements:
 - Has search function based on Coalace and sqlc args for a flexible search of file based on need
 
 
-6. Database Interaction:
+5. Database Interaction:
 - Used Postgresql and sqlc with mocks for file details handling and mapping
 - Tests to keep DB operations in sync
+![image](https://github.com/user-attachments/assets/cb518360-bda3-4172-906a-19a7522ebf66)
 
 
-7. Background Job for File Deletion:
+6. Background Job for File Deletion:
 - Utilized cron job to run deleter function @hourley
 
-8. Testing:
+7. Testing:
 Complete app is test driven which is pretty evident
 - Makefile has every commands u need including test to facilitate all unit testing on multiple layers
+![image](https://github.com/user-attachments/assets/9461ed0e-361e-4b58-8f2f-769571bb20fc)
+
+![image](https://github.com/user-attachments/assets/84753341-6363-4781-9c7e-365bac68faa9)
+
+8. Redis:
+- Redis setup with Task processor and Distributor using Asynq for background workers
+  
 
 
 

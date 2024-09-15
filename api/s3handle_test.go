@@ -74,28 +74,3 @@ func TestUploadFileAPI(t *testing.T) {
 		})
 	}
 }
-// 			defer ctrl.Finish()
-
-// 			store := mockdb.NewMockStore(ctrl)
-// 			// tc.buildStubs(store)
-// 			arg := db.Create{
-// 				Username: user.Username,
-// 				FullName: user.FullName,
-// 				Email:    user.Email,
-// 			}
-// 			store.EXPECT().
-// 				CreateUser(gomock.Any(), EqCreateUserParams(arg, password)).
-// 				Times(1).
-// 				Return(user, nil)
-
-// 			server := newTestServer(t, store)
-// 			recorder := httptest.NewRecorder()
-			
-// 			url := "/users"
-// 			request, err := http.NewRequest(http.MethodPost, url, bytes.NewReader(data))
-// 			require.NoError(t, err)
-
-// 			server.router.ServeHTTP(recorder, request)
-// 			require.Equal(t, http.StatusOK, recorder.Code)
-			
-// }

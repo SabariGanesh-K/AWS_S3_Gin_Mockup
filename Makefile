@@ -21,6 +21,8 @@ server:
 
 test:
 	go test -v -cover ./db/sqlc ./api ./token ./util
+testmail:
+	go test -v -cover ./email
 
 migrateup:
 	migrate -path db/migrations -database "$(DB_URL)" -verbose up
@@ -29,4 +31,6 @@ mock:
 	mockgen -package mockdb -destination db/mock/store.go github.com/SabariGanesh-K/21BPS1209_Backend.git/db/sqlc Store
 
 
-.PHONY: postgres new_migration createdb dropdb migrateup createmigrateinitschema sqlc mock test
+redis:
+	docker run --name redis -p 6379:6379 -d redis:7-alpine
+.PHONY: postgres new_migration createdb dropdb migrateup createmigrateinitschema sqlc mock test  redis testmail

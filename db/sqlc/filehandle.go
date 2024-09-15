@@ -29,28 +29,4 @@ func UploadFile(uploader *s3manager.Uploader, filePath string, bucketName string
 }
 
 
-// func main() {
-// 	sess, err := session.NewSessionWithOptions(session.Options{
-// 		Profile: "default",
-// 		Config: aws.Config{
-// 			Region: aws.String("us-east-1"),
-// 		},
-// 	})
-
-// 	if err != nil {
-// 		fmt.Printf("Failed to initialize new session: %v", err)
-// 		return
-// 	}
-
-// 	bucketName := "elasticbeanstalk-us-east-1-686995207617"
-// 	uploader := s3manager.NewUploader(sess)
-// 	filename := "1.jpg"
-
-// 	err = UploadFile(uploader, "1.jpg", bucketName, filename)
-// 	if err != nil {
-// 		fmt.Printf("Failed to upload file: %v", err)
-// 	}
-
-// 	fmt.Println("Successfully uploaded file!")
-// }
 

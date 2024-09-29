@@ -1,5 +1,5 @@
-<h1>Complete Test Driven Development of Backend using Go Lang " File Sharing & Management System " </h1>
-[IN PROGRESS] !!!
+<h1>Complete Test Driven Development of Backend using Go Lang and AWS  S3 </h1>
+
 <h2>Features and Stacks </h2>
 - Used Gin framework for Backend 
 
@@ -82,6 +82,43 @@ Complete app is test driven which is pretty evident
 8. Redis:
 - Redis setup with Task processor and Distributor using Asynq for background workers
   
+<h1> Running and Installation Instructions in Local </h2>
+
+Clone the repo to your local
+
+Start your Docker Engine 
+
+Install Docker dependency Images for Postgres and Redis Alpine Images [ If not installed already ] 
+```code
+make docker
+make redis
+```
+
+Configure AWS IAM config details to access AWS Services .
+- Install aws cli
+- Create a S3 Bucket in AWS Console
+- Create a IAM User role and attach policy to access S3 Buckets with the IAM role user
+- Download and record the Access key ID and Secret Access key
+- Now enter in the prompt when asked after 
+```code
+aws config
+```
+
+Launch the images
+```code
+make launch
+```
+Start the server
+```code
+make server
+```
+
+
+
+
+
+
+
 
 
 

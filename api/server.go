@@ -6,6 +6,8 @@ import (
 	db "github.com/SabariGanesh-K/21BPS1209_Backend.git/db/sqlc"
 	"github.com/SabariGanesh-K/21BPS1209_Backend.git/token"
 	"github.com/SabariGanesh-K/21BPS1209_Backend.git/util"
+	"github.com/SabariGanesh-K/21BPS1209_Backend.git/cronjob"
+
 	"github.com/gin-gonic/gin"
 	// "github.com/gin-gonic/gin/binding"
 	// "github.com/go-playground/validator/v10"
@@ -53,7 +55,8 @@ func (server *Server) setupRouter() {
 }
 
 func (server *Server) Start(address string) error {
-	// err := cron.startBackgroundJob(ctx, server.config, server.store)
+	c := cronjob.InitCronScheduler()
+	defer c.Stop()
 	return server.router.Run(address)
 }
 func errorResponse(err error) gin.H {

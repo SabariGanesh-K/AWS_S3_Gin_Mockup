@@ -2,34 +2,65 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
+	// "encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"testing"
-	"github.com/gin-gonic/gin"
+	 "mime/multipart"
+    "os"
+	"io"
+	// "github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
 	mockdb "github.com/SabariGanesh-K/21BPS1209_Backend.git/db/mock"
 )
 type uploadFileParams struct {
-	Filepath string `json:"filepath" binding:"required"`
-	Filename string `json:"filename" binding:"required"`
+	File *multipart.FileHeader `form:"file" `
+	Filename string `form:"filename" binding:"required"`
 	
 }
+
 func TestUploadFileAPI(t *testing.T) {
-     
+	
+	file,err:= os.Open("./2.jpg")
+	require.NoError(t,err)
+	defer file.Close()
+	filestate,_ := file.Stat()
+	fileheader:=multipart.FileHeader{
+		Filename:"2.jpg",
+		Header:nil,
+		Size:     filestate.Size(),
+
+	}
+	reqbody := &bytes.Buffer{}
+	writer := multipart.NewWriter(reqbody)
+	part, errr := writer.CreateFormFile("file", fileheader.Filename)
+	require.NoError(t,errr)
+	_, err = io.Copy(part, file)
+	require.NoError(t,err)
+	err = writer.WriteField("filename", "sample.jpg") 
+	require.NoError(t,err)
+	err = writer.Close()
+	require.NoError(t,err)
+	// url:="http://localhost:8081/file/one"
+	// request, err := http.NewRequest(http.MethodPost,url , body)
+	// 		require.NoError(t, err)
+	// 		request.Header.Set("Content-Type", writer.FormDataContentType())
+	// 		client := &http.Client{}
+	// 		resp, erro := client.Do(request)
+	// require.NoError(t,erro)
+
+			// defer resp.Body.Close()
+
 	testCases := []struct {
 		name          string
-		body          gin.H
+		body         *bytes.Buffer
 		buildStubs    func(store *mockdb.MockStore)
 		checkResponse func(recoder *httptest.ResponseRecorder)
 	}{
 		{
 			name: "OK",
-			body: gin.H{
-				"filepath":"2.jpg",
-				"filename":"2.jpg",
-			},
+			body: reqbody,
 			buildStubs: func(store *mockdb.MockStore) {
 				// store.EXPECT().
 				// 	GetUser(gomock.Any(), gomock.Eq(user.Username)).
@@ -44,8 +75,6 @@ func TestUploadFileAPI(t *testing.T) {
 				require.Equal(t,true,true)
 			},
 		},
-	
-		
 	}
 
 	for i := range testCases {
@@ -62,13 +91,12 @@ func TestUploadFileAPI(t *testing.T) {
 			recorder := httptest.NewRecorder()
 
 			// Marshal body data to JSON
-			data, err := json.Marshal(tc.body)
 			require.NoError(t, err)
 
 			url := "/file/one"
-			request, err := http.NewRequest(http.MethodPost, url, bytes.NewReader(data))
+			request, err := http.NewRequest(http.MethodPost, url, tc.body)
 			require.NoError(t, err)
-
+			request.Header.Set("Content-Type", writer.FormDataContentType())
 			server.router.ServeHTTP(recorder, request)
 			tc.checkResponse(recorder)
 		})

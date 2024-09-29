@@ -1,38 +1,34 @@
-package cron
+package cronjob
 
 import (
-    "context"
-    "fmt"
-    "time"
+   "fmt"
+   "net/http"
+   "time"
 
-    "github.com/aws/aws-sdk-go-v2/config"
-    "github.com/aws/aws-sdk-go-v2/service/s3"
-    "github.com/robfig/cron/v3"
+   "github.com/robfig/cron"
 )
 
-func DeleteExpiredFiles(ctx context.Context, s3Client *s3.Client, db *db.Queries) error {
-	fmt.println("fetching and eleting old files...")
-    return nil 
-}
-
-func StartBackgroundJob(ctx context.Context, s3Client *s3.Client, db *db.Queries) error {
-    cfg, err := config.LoadDefaultConfig(ctx)
-    if err != nil {
-        return err
-    }
-
-    if s3Client == nil {
-        s3Client = s3.NewFromConfig(cfg)
-    }
-
+func InitCronScheduler() *cron.Cron {
     c := cron.New()
-    c.AddFunc("@hourly", func() {
-        err := DeleteExpiredFiles(ctx, s3Client, db)
-        if err != nil {
-            fmt.Println("Error deleting expired files:", err)
-        }
-    })
+ 
+    c.AddFunc("@every 00h00m10s", BackUpLocalDataCall)
+ 
+    c.Start()
+    fmt.Println("Cron scheduler initialized")
+    return c
+ }
+ 
+ func BackUpLocalDataCall() {
 
-    go c.Start() 
-    return nil
-}
+    
+ 
+    fmt.Println("Cron job called")
+    //add your codes to backup or any utilities
+ }
+ 
+
+ 
+ // BackUpLocalData handles HTTP requests and performs a backup
+ func BackUpLocalData(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "calling the API after every 10 seconds at %s", time.Now().Format("2006-01-02 15:04:05"))
+ }

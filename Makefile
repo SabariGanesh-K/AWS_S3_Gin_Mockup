@@ -1,6 +1,5 @@
 DB_URL=postgresql://root:secret@localhost:5432/filemanager?sslmode=disable
 
-
 postgres:
 	docker run --name postgres -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:14-alpine
 createmigrateinitschema:
@@ -20,7 +19,7 @@ server:
 	go run main.go
 
 test:
-	go test -v -cover ./db/sqlc ./api ./token ./util ./email
+	go test -v -cover ./db/sqlc ./api ./token  ./email
 testmail:
 	go test -v -cover ./email
 
@@ -33,4 +32,8 @@ mock:
 
 redis:
 	docker run --name redis -p 6379:6379 -d redis:7-alpine
-.PHONY: postgres new_migration createdb dropdb migrateup createmigrateinitschema sqlc mock test  redis testmail
+
+launch:
+	docker start postgres
+	docker start redis
+.PHONY: postgres new_migration createdb dropdb migrateup createmigrateinitschema sqlc mock test  redis testmail launch

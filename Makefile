@@ -19,7 +19,7 @@ server:
 	go run main.go
 
 test:
-	go test -v -cover ./db/sqlc ./api ./token  ./email
+	go test -v -cover ./db/sqlc ./api ./token  
 testmail:
 	go test -v -cover ./email
 

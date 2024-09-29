@@ -28,20 +28,6 @@
 
  Feel free to checkout the code.
 
-
-<h2>Before we go further , I would like to introduce myself </h2>
-
-This is Sabari , A tech enthusiast known for my tech skills and versatility in learning new technologies. My past experience revolves around multiple domains with major ones:
-- Fullstack Intern at Nethermind , United Kingdom [Remote] . I was involved in multiple projects including go lang major project called sedge , which is a commandline based project for blockchain POS networks. The day where I was
-- introduced to the world of Go lang
-- SDE Intern at Hashstack Finance , Bengaluru . A finance based protocol trading application that revoved around Next , typescript , Next API , AWS DynamoDBs etc. Was involved fullstack in contributing to project
-- Backend and Infrastructure Intern at EDMYN - A Edtech startup By leading National level Computer science Academic author Ms. Sumita Arora . Involved in designing backend , architecture in firebase and developing it with CTO [I was the first hire :) ]
-- Hvae worked with other startups like Golddust Finance as well with freelancing experince in freshman + sophomore year
-- Experienced and skilled in Go lang. Have also taken courses revolving around Go lang. 
-- Also a fun , empathetic , motivated coder with a will to do anything that is required . Have always been a all rounder as well being passionate on extracurrcilurs in college. Will be a fun to have extrovert around the office
-
-- You may know more about me here :-([www.sabari.codes](https://www.sabari.codes))
-
 <h2>Technical Implementation</h2>
 
 Pointer wise explanation :-
